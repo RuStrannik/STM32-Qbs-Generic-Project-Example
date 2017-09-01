@@ -10,8 +10,9 @@ STM32Project {
 
 	name: "MyProject"
 	deviceName: "STM32F407VGT6" // Required full name of the MCU in STM32X000XXX0 format, it is always printed on the chip surface
-	STM32ProjPath: path
+	HSE_VALUE: 8000000 // Hz
 
+	STM32ProjPath: path
 	STM32SdkPlatformPath: STM32ProjPath+"/library"
 
 	stdc: "c11"
