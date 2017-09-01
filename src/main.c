@@ -1,3 +1,24 @@
+/*
+
+Recommended library folder structure
+
+STM32/library
+ ├─CMSIS
+ │  ├─Device/ST/STM32F4xx/
+ │  │  ├─Include
+ │  │  └─Source/Templates/gcc_ride7
+ │  └─Include
+ ├─FreeRTOS_9.0.0
+ │  ├─include
+ │  ├─MemMang
+ │  └─MPU
+ └─STM32F4xx_StdPeriph_Driver
+	├─inc
+	└─src
+*/
+
+
+
 #include "stm32f4xx.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
@@ -18,6 +39,9 @@
 
 
 void InitAll(void) {
+
+	SystemCoreClockUpdate();
+
 	GPIO_InitTypeDef GPIO_InitStruct;
 
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
@@ -38,6 +62,7 @@ void Task_Blinky (void* par) {
 		LedTog(LED_GREEN);
 		vTaskDelay(250);
 	};//inf loop
+
 };//Task_Blinky()
 int main(void) {
 
@@ -58,19 +83,3 @@ int main(void) {
 }//main()
 
 
-
-/*
-STM32/library
- ├─CMSIS
- │  ├─Device/ST/STM32F4xx/
- │  │  ├─Include
- │  │  └─Source/Templates/gcc_ride7
- │  └─Include
- ├─FreeRTOS_9.0.0
- │  ├─include
- │  ├─MemMang
- │  └─MPU
- └─STM32F4xx_StdPeriph_Driver
-	├─inc
-	└─src
-*/
