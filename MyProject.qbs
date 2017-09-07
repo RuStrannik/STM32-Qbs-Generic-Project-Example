@@ -33,7 +33,6 @@ STM32Project {
 
 		RTOS {
 			name: "FreeRTOS_900";
-			MemMang: "1";
 			rtosConfigFilePath: STM32ProjPath+"/config";
 			rtoslibLocation: STM32SdkPlatformPath + "/FreeRTOS_9.0.0";
 		}//RTOS
@@ -63,10 +62,7 @@ STM32Project {
 			}//Group
 
 			cpp.linkerFlags: [
-							"--wrap=malloc",
-							"--wrap=calloc",
-							"--wrap=free",
-							"-Map="+STM32ProjPath+"/output.map",
+				"-Map="+STM32ProjPath+"/output.map",
 			].concat(base)
 		}//STM32Application
 	}//Project

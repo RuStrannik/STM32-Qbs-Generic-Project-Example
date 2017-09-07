@@ -28,18 +28,6 @@ ArmMcuProduct {
 			default: throw new Error("Unknown port! Please, configure your port directory manually.");
 		};//switch()
 
-//		if (parseInt(cpuName.substr(8)) >= 0 && parseInt(cpuName.substr(8)) <= 4) {
-//			if (((parseInt(cpuName.substr(8)) === 3) || (parseInt(cpuName.substr(8)) === 4)) && useMPU) {
-//				base += "_MPU";
-//			} else {
-//				base += "F";
-//			}
-//		};//if (cortex M0..M4)
-		//console.warn(cpuName.substring(7,9).toUpperCase());
-					// C + M4 + _MPU : F
-		//console.warn(cpuName.substr(0,1) + cpuName.substr(7));
-		//base += "/";
-		//console.warn(base);
 		return base;
 	}
 	property pathList rtoslibFiles: {
@@ -75,7 +63,6 @@ ArmMcuProduct {
 
 	Export {
 		Depends { name: "cpp" }
-		//Depends { name: "startup" }
 		cpp.includePaths: product.rtoslibIncludePaths
 		cpp.defines: product.rtoslibDefines
 	}
