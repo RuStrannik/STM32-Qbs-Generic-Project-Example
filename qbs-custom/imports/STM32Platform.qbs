@@ -7,6 +7,8 @@ ArmMcuProduct {
 
 	id: startup;
 	name: "generic platform startup";
+	type: "staticlibrary"
+
 	cpuName: info.cpu;
 	fpuName: info.fpu;
 	floatAbi: info.floatAbi;

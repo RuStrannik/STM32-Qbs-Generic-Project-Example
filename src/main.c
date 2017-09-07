@@ -60,7 +60,7 @@ void Task_Blinky (void* par) {
 
 	for (;;) {
 		LedTog(LED_GREEN);
-		vTaskDelay(250);
+		vTaskDelay(500);
 	};//inf loop
 
 };//Task_Blinky()

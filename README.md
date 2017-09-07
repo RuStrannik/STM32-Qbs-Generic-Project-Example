@@ -7,9 +7,10 @@
 <body>
 
 <center><h1>STM32 Generic Qbs Project</h1></center>
-<br><h3>Allows you to compile and link an STM32 application (which uses Standard Peripheral Driver Library) in 1 click with minimal configuration time.</h3>
+<br><h3>Allows you compile and link an STM32 application, which uses Standard Peripheral Driver Library, in 1 click with minimal configuration time.</h3>
 Recommended STM32 library folder structure:
-<pre>STM32/library
+<pre>
+STM32/library
  ├─CMSIS
  │  ├─Device/ST/STM32F4xx/
  │  │  ├─Include
@@ -20,8 +21,8 @@ Recommended STM32 library folder structure:
  │  ├─MemMang
  │  └─MPU
  └─STM32F4xx_StdPeriph_Driver
-    ├─inc
-    └─src
+	├─inc
+	└─src
 </pre>
 
 </body>

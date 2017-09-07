@@ -15,7 +15,7 @@ STM32Project {
 	STM32ProjPath: path
 	STM32SdkPlatformPath: STM32ProjPath+"/library"
 
-	stdc: "c11"
+	stdc: "gnu11"
 	optimization: "3"; //fast
 
 	deviceHeapSize: 0
