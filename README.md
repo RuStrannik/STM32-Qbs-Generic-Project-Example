@@ -1,5 +1,5 @@
 # STM32 Generic Qbs Project
-###### Allows you compile and link an STM32 application, which uses Standard Peripheral Driver Library, in 1 click with minimal configuration time.<br>
+#### Allows you compile and link an STM32 application, which uses Standard Peripheral Driver Library, in 1 click with minimal configuration time.<br>
 Recommended STM32 library folder structure:<br>
 ```
 STM32/library
