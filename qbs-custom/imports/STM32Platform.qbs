@@ -1,6 +1,10 @@
 import qbs;
 import qbs.File
 import qbs.FileInfo
+import qbs.ModUtils
+//import qbs.Environment
+//import qbs.PathTools
+//import qbs.Utilities
 import "STM32PlatformInfo.js" as STM32PlatformInfo
 
 ArmMcuProduct {
@@ -9,10 +13,10 @@ ArmMcuProduct {
 	name: "generic platform startup";
 	type: "staticlibrary"
 
-	cpuName: info.cpu;
-	fpuName: info.fpu;
-	floatAbi: info.floatAbi;
-	property string devFamilyStr:  info.deviceFamily + ((info.deviceFamily === "F1" || info.deviceFamily === "F3")?"0x":"xx");
+	cpuName: project.info.cpu;
+	fpuName: project.info.fpu;
+	floatAbi: project.info.floatAbi;
+	property string devFamilyStr:  project.info.deviceFamily + ((project.info.deviceFamily === "F1" || project.info.deviceFamily === "F3")?"0x":"xx");
 
 	property stringList usedPeriph: [
 			"adc",			"exti",				"pwr",

@@ -2,8 +2,8 @@ import qbs;
 
 ArmMcuApplication {
 
-	cpuName: info.cpu
-	fpuName: info.fpu
-	floatAbi: info.floatAbi
-
+	cpuName: "-"
+	fpuName: "-"
+	floatAbi: "-"
+	//LoadFlash: false;
 }

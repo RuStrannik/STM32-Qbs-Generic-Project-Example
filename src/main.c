@@ -71,6 +71,7 @@ void Task_Blinky (void* par) {
 	};//inf loop
 
 };//Task_Blinky()
+
 int main(void) {
 
 	InitAll();

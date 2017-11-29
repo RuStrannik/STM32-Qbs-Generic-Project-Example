@@ -21,33 +21,25 @@ STM32Project {
 	deviceHeapSize: 0
 	useStdPeriphDrv: true
 
-	Project {
-		name: "STM32F4 Drivers"
-
 		STM32Platform {
-			name: "STM32F4_Platform";
+			name: "STM32F4_Platform_Lib";
 			usedPeriph: [ "gpio","rcc", ];
 			deviceIncludePaths: [STM32ProjPath + "/config", ].concat(base);
 			deviceLinkerScript: STM32ProjPath + "/config/STM32F407VG_FLASH.ld";
 		}//STM32Startup
 
 		RTOS {
-			name: "FreeRTOS_900";
+			name: "FreeRTOS_900_Lib";
 			rtosConfigFilePath: STM32ProjPath+"/config";
 			rtoslibLocation: STM32SdkPlatformPath + "/FreeRTOS_9.0.0";
 		}//RTOS
 
-
-	}//Project
-
-	Project {
-		name: "Application"
 		STM32Application {
 			name: "MyApp"
 
 			Depends { name: "cpp"; }
-			Depends { name: "STM32F4_Platform";	required: true; }
-			Depends { name: "FreeRTOS_900";		required: true; }
+			Depends { name: "STM32F4_Platform_Lib";	required: true; }
+			Depends { name: "FreeRTOS_900_Lib";		required: true; }
 
 			Group {
 				name: "Sources"
@@ -61,11 +53,21 @@ STM32Project {
 				excludeFiles: []
 			}//Group
 
+			cpp.defines: [
+			]
+
+			cpp.staticLibraries: [
+				"c",
+				"m",
+				"gcc",
+				"nosys",
+			]
+
 			cpp.linkerFlags: [
-				"-Map="+STM32ProjPath+"/output.map",
+				"-Map="+project.STM32ProjPath+"/output.map",
 			].concat(base)
 		}//STM32Application
-	}//Project
+//	}//Project
 }//MCB Project
 
 

@@ -7,9 +7,9 @@ ArmMcuProduct {
 	id: rtos
 	name: "RTOS"
 	type: "staticlibrary" // application // staticlibrary // dynamiclibrary // cppapplication
-	cpuName: info.cpu
-	fpuName: info.fpu
-	floatAbi: info.floatAbi
+	cpuName: project.info.cpu
+	fpuName: project.info.fpu
+	floatAbi: project.info.floatAbi
 
 	property bool useMPU: false
 	property string MemMang: "1"

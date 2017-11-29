@@ -3,7 +3,10 @@ import qbs.FileInfo
 
 ArmMcuProduct {
 
-	type: ["application", "hex", "bin", "load", "size", ]
+	cpuName: project.info.cpu
+	fpuName: project.info.fpu
+	floatAbi: project.info.floatAbi
+
 
 	cpp.executableSuffix: ".out"
 
@@ -44,7 +47,7 @@ ArmMcuProduct {
 	Rule { // Loading to Microcontroller
 		id: load
 		inputs: ["bin"]
-//		condition: qbs.buildVariant == "release"//"debug"//
+		condition: product.PerformFlash === true; //qbs.buildVariant == "release"//"debug"//
 //		alwaysRun: true
 		prepare: {
 			var args = ["-C",										// connect
@@ -69,22 +72,49 @@ ArmMcuProduct {
 		}
 	}//Rule
 
-	Rule {
-		id: size
+	Rule { // Reset Microcontroller
+		id: reset
 		inputs: ["load"]
-		alwaysRun: true
+//		inputs: ["bin"]
+		condition: product.PerformExtraReset === true; //qbs.buildVariant == "release"//"debug"//
+//		condition: qbs.buildVariant == "release"//"debug"//
+//		alwaysRun: true
 		prepare: {
-			var args = [FileInfo.path(input.filePath) + "/*"+ product.cpp.executableSuffix];
-			var cmd = new Command("arm-none-eabi-size", args);
-			cmd.description = "File size: " + FileInfo.fileName(input.filePath);
+			var args = ["-Rst"]; // Cannot use -HardRst: it works too quickly
+			var cmd = new Command("d:/Programs/ST-LINK Utility/ST-LINK Utility/ST-LINK_CLI.exe", args);
+			cmd.description = "Resetting: "+ input.filePath;
 			cmd.highlight = "linker";
 			return cmd;
 		}
 		Artifact {
-			fileTags: ["size"]
-			filePath: FileInfo.baseName(input.filePath) + ".size"
+			fileTags: ["reset"]
+			filePath: "reset"
 		}
 	}//Rule
 
+
+	Rule {
+		multiplex: true
+		id: size
+		inputs: ["application", "load"]
+		alwaysRun: true
+		prepare: {
+			var args = [ FileInfo.path(output.filePath) + "/*"+ product.cpp.executableSuffix, ];
+			var cmd = new Command("arm-none-eabi-size", args);
+			cmd.description = "File size: " + FileInfo.fileName(output.filePath);
+			cmd.highlight = "linker";
+			//console.warn("size: "+input.filePath);
+			return cmd;
+		}
+		Artifact {
+			fileTags: ["size"]
+			filePath: "size"
+		}
+	}//Rule
+
+	Group {	 // Properties for the produced executable
+		fileTagsFilter: ["hex", "bin"] // product.type
+		qbs.install: true
+	}
 }//ArmMcuProduct
 
