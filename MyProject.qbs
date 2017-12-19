@@ -23,8 +23,6 @@ STM32Project {
 
 	deviceHeapSize: 0
 	useStdPeriphDrv: true
-git config user.email "nik.pda@gmail.com"
-git config user.name "Nik"
 
 	STM32Platform {
 		name: "STM32F4_Platform_Lib";
