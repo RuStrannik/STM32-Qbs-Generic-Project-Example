@@ -7,6 +7,7 @@ ArmMcuProduct {
 	fpuName: project.info.fpu
 	floatAbi: project.info.floatAbi
 
+	type: ["application", "hex", "bin", "load", "reset", "size", ]
 
 	cpp.executableSuffix: ".out"
 
@@ -61,7 +62,7 @@ ArmMcuProduct {
 //						"-HardRst",									// Hardware reset
 //						"-TVolt",									// Display target voltage
 						];
-			var cmd = new Command("d:/Programs/ST-LINK Utility/ST-LINK Utility/ST-LINK_CLI.exe", args);
+			var cmd = new Command("d:/Program Files/ST-LINK Utility/ST-LINK Utility/ST-LINK_CLI.exe", args);
 			cmd.description = "Flashing: "+ input.filePath;
 			cmd.highlight = "linker";
 			return cmd;

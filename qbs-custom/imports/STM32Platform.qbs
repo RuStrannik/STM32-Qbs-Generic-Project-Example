@@ -13,8 +13,8 @@ ArmMcuProduct {
 	name: "generic platform startup";
 	type: "staticlibrary"
 
-	cpuName: project.info.cpu;
-	fpuName: project.info.fpu;
+	cpuName:  project.info.cpu;
+	fpuName:  project.info.fpu;
 	floatAbi: project.info.floatAbi;
 	property string devFamilyStr:  project.info.deviceFamily + ((project.info.deviceFamily === "F1" || project.info.deviceFamily === "F3")?"0x":"xx");
 

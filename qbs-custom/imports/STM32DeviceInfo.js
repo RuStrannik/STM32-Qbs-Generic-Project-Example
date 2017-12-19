@@ -108,13 +108,11 @@ function fpuName(cpu) {
 function parse(deviceName) {
 
 	if (typeof(deviceName) !== "string") {
-		throw new Error("deviceName should be a string, but isn't.");
+		throw new Error("deviceName should be a string, but it isn't.");
 	}
 
 	var regex = new RegExp("([A-Z]{3}32)(F[0-9])([0-9]{2})([A-Z])([A-Z0-9])([A-Z])([0-9])", "i");
 	var arr = deviceName.match(regex);
-
-//	arr = "STM32F429ZIT6".match(regex);
 
 	if (arr === null) {
 		throw new Error("deviceName could not be parsed.");
