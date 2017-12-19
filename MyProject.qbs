@@ -23,6 +23,8 @@ STM32Project {
 
 	deviceHeapSize: 0
 	useStdPeriphDrv: true
+git config user.email "nik.pda@gmail.com"
+git config user.name "Nik"
 
 	STM32Platform {
 		name: "STM32F4_Platform_Lib";
@@ -37,7 +39,6 @@ STM32Project {
 		rtoslibLocation: STM32SdkPlatformPath + "/FreeRTOS_9.0.0";
 	}//RTOS
 
-	//STM32Application {
 	ArmMcuApplication {
 		name: "MyApp"
 
@@ -70,7 +71,7 @@ STM32Project {
 		cpp.linkerFlags: [
 			"-Map="+project.STM32ProjPath+"/output.map",
 		].concat(base)
-	}//STM32Application
+	}//ArmMcuApplication
 }//Project
 
 
